@@ -42,6 +42,9 @@ func main() {
 		fmt.Println(*signstrr)
 		fmt.Println(*strpr)
 	}
-
+	//publicParam:=&bean.PublicParam{
+	//	"adsfs","sadfsa","dsafsa","sadfaf","dsafaf","asdf","asdf",
+	//	"sadfaf"
+	//}
 
 }
