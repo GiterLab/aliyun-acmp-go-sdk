@@ -2,38 +2,37 @@ package push
 
 import (
 	"aliyun-acmp-go-sdk/acmp/bean"
-	"errors"
 	"aliyun-acmp-go-sdk/acmp/signature"
+	"errors"
 	"fmt"
 	"net/http"
 )
 
-func PushNotice(rootUrl,accessSecret *string,publicParam *bean.PublicParam,noticeParam *bean.NoticeParam)(resp *http.Response,err error) {
-	if publicParam==nil||noticeParam==nil {
+func PushNotice(rootUrl, accessSecret *string, publicParam *bean.PublicParam, noticeParam *bean.NoticeParam) (resp *http.Response, err error) {
+	if publicParam == nil || noticeParam == nil {
 		return nil, errors.New("PushNotice param pointer shouldn't be nil")
 	}
-	publicParamStr,_:=publicParam.ToStringWithoutSignature()
-	noticeParamStr,_:=noticeParam.ToString()
-	urlstr:=*rootUrl+"/?"+*publicParamStr+*noticeParamStr
+	publicParamStr, _ := publicParam.ToStringWithoutSignature()
+	noticeParamStr, _ := noticeParam.ToString()
+	urlstr := *rootUrl + "/?" + *publicParamStr + *noticeParamStr
 	var httpurlp *string
-	httpurlp=&urlstr
-	method:=http.MethodGet
+	httpurlp = &urlstr
+	method := http.MethodGet
 	var httpMethodP *string
-	httpMethodP=&method
-	signstr,err:=signature.SignatureString(httpurlp,httpMethodP)
-	if err!=nil {
-		return nil,errors.New("PushNotice signature.SignatureString err")
+	httpMethodP = &method
+	signstr, err := signature.SignatureString(httpurlp, httpMethodP)
+	if err != nil {
+		return nil, errors.New("PushNotice signature.SignatureString err")
 	}
-	signaturestr,err:=signature.GetSignature(signstr,accessSecret)
-	if err!=nil {
-		return nil,errors.New("PushNotice signature.GetSignature err")
+	signaturestr, err := signature.GetSignature(signstr, accessSecret)
+	if err != nil {
+		return nil, errors.New("PushNotice signature.GetSignature err")
 	}
-	finalUrlStr:=urlstr+"&Signature="+*signaturestr
+	finalUrlStr := urlstr + "&Signature=" + *signaturestr
 	fmt.Println(finalUrlStr)
-	resp,err=http.Get(finalUrlStr)
-	if err!=nil {
-		return nil,errors.New("PushNotice http.Get err")
+	resp, err = http.Get(finalUrlStr)
+	if err != nil {
+		return nil, errors.New("PushNotice http.Get err")
 	}
-	return resp,nil
+	return resp, nil
 }
-
