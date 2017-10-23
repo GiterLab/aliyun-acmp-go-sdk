@@ -7,7 +7,7 @@ import "errors"
 //var pushMessageToAndroid="PushMessageToAndroid"
 //var pushMessageToiOS="PushMessageToiOS"
 //
-//var MessgeActionType  = [...]*string{
+//var MessgeActionType  = [...]string{
 //	&pushMessageToAndroid,
 //	&pushMessageToiOS,
 //}
@@ -37,28 +37,28 @@ const (
 )
 
 type MessageParam struct {
-	Action      *messageType `json:"action"`
-	AppKey      *string      `json:"app_key"`
-	Target      *targetType  `json:"target"`
-	TargetValue *string      `json:"target_value"`
-	Title       *string      `json:"title"`
-	Body        *string      `json:"body"`
+	Action      messageType `json:"action"`
+	AppKey      string      `json:"app_key"`
+	Target      targetType  `json:"target"`
+	TargetValue string      `json:"target_value"`
+	Title       string      `json:"title"`
+	Body        string      `json:"body"`
 }
 
-func (this *MessageParam) ToString() (paramstrp *string, err error) {
+func (this *MessageParam) ToString() (paramstrp string, err error) {
 	if this == nil {
-		return nil, errors.New("MessageParam pointer shouldn't be nil")
+		return "", errors.New("MessageParam pointer shouldn't be nil")
 	}
-	if this.Action == nil || this.AppKey == nil || this.Target == nil || this.TargetValue == nil || this.Title == nil || this.Body == nil {
-		return nil, errors.New("MessageParam some perpoties shouldn't be nil")
+	if this.Action == "" || this.AppKey == "" || this.Target == "" || this.TargetValue == "" || this.Title == "" || this.Body == "" {
+		return "", errors.New("MessageParam some perpoties shouldn't be nil")
 	}
-	if *this.Action != PushMessageToAndroid || *this.Action != PushMessageToiOS {
-		return nil, errors.New("MessageParam Action should be PushMessageToAndroid or PushMessageToiOS")
+	if this.Action != PushMessageToAndroid || this.Action != PushMessageToiOS {
+		return "", errors.New("MessageParam Action should be PushMessageToAndroid or PushMessageToiOS")
 	}
-	if *this.Target != DEVICE || *this.Target != ACCOUNT || *this.Target != ALIAS || *this.Target != TAG || *this.Target != ALL {
-		return nil, errors.New("MessageParam Target should be DEVICE, ACCOUNT,ALIAS,TAG,ALL or PushMessageToiOS")
+	if this.Target != DEVICE || this.Target != ACCOUNT || this.Target != ALIAS || this.Target != TAG || this.Target != ALL {
+		return "", errors.New("MessageParam Target should be DEVICE, ACCOUNT,ALIAS,TAG,ALL or PushMessageToiOS")
 	}
 	var headstr string
-	headstr += "Action=" + *this.Action + "&AppKey=" + *this.AppKey + "&Target=" + *this.Target + "&TargetValue=" + *this.TargetValue + "&Title=" + *this.Title + "&Body=" + *this.Body
-	return &headstr, nil
+	headstr += "Action=" + this.Action + "&AppKey=" + this.AppKey + "&Target=" + this.Target + "&TargetValue=" + this.TargetValue + "&Title=" + this.Title + "&Body=" + this.Body
+	return headstr, nil
 }
