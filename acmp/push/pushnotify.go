@@ -6,9 +6,10 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"io/ioutil"
 )
 
-func PushNotice(rootUrl, accessSecret *string, publicParam *bean.PublicParam, noticeParam *bean.NoticeParam) (resp *http.Response, err error) {
+func PushNotice(rootUrl, accessSecret *string, publicParam *bean.PublicParam, noticeParam *bean.NoticeParam) (responeString *string, err error) {
 	if publicParam == nil || noticeParam == nil {
 		return nil, errors.New("PushNotice param pointer shouldn't be nil")
 	}
@@ -30,9 +31,11 @@ func PushNotice(rootUrl, accessSecret *string, publicParam *bean.PublicParam, no
 	}
 	finalUrlStr := urlstr + "&Signature=" + *signaturestr
 	fmt.Println(finalUrlStr)
-	resp, err = http.Get(finalUrlStr)
+	resp, err := http.Get(finalUrlStr)
 	if err != nil {
 		return nil, errors.New("PushNotice http.Get err")
 	}
-	return resp, nil
+	resultByte,_:=ioutil.ReadAll(resp.Body)
+	temp:=string(resultByte)
+	return &temp, nil
 }
