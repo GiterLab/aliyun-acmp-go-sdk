@@ -1,4 +1,4 @@
-package bean
+package push
 
 import "errors"
 
@@ -19,30 +19,26 @@ import "errors"
 //	PushMessageToiOS
 //)
 
-type messageType string
-
 const (
-	PushMessageToAndroid messageType = "PushMessageToAndroid"
-	PushMessageToiOS                 = "PushMessageToiOS"
+	PushMessageToAndroid string = "PushMessageToAndroid"
+	PushMessageToiOS            = "PushMessageToiOS"
 )
 
-type targetType string
-
 const (
-	DEVICE  targetType = "DEVICE"
-	ACCOUNT            = "ACCOUNT"
-	ALIAS              = "ALIAS"
-	TAG                = "TAG"
-	ALL                = "ALL"
+	DEVICE  string = "DEVICE"
+	ACCOUNT        = "ACCOUNT"
+	ALIAS          = "ALIAS"
+	TAG            = "TAG"
+	ALL            = "ALL"
 )
 
 type MessageParam struct {
-	Action      messageType `json:"action"`
-	AppKey      string      `json:"app_key"`
-	Target      targetType  `json:"target"`
-	TargetValue string      `json:"target_value"`
-	Title       string      `json:"title"`
-	Body        string      `json:"body"`
+	Action      string `json:"action"`
+	AppKey      string `json:"app_key"`
+	Target      string `json:"target"`
+	TargetValue string `json:"target_value"`
+	Title       string `json:"title"`
+	Body        string `json:"body"`
 }
 
 func (m *MessageParam) ToString() (paramstrp string, err error) {

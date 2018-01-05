@@ -1,7 +1,6 @@
 package push
 
 import (
-	"aliyun-acmp-go-sdk/acmp/bean"
 	"aliyun-acmp-go-sdk/acmp/signature"
 	"errors"
 	"fmt"
@@ -12,8 +11,8 @@ import (
 type Notify struct {
 	RootUrl      string
 	AccessSecret string
-	PublicParam  *bean.PublicParam
-	NoticeParam  *bean.NoticeParam
+	PublicParam  *PublicParam
+	NoticeParam  *NoticeParam
 }
 
 func (m *Notify) SetRootUrl(rootUrl string) {
@@ -24,26 +23,26 @@ func (m *Notify) SetAccessSecret(accessSecret string) {
 	m.AccessSecret = accessSecret
 }
 
-func (m *Notify) SetPublicParam(publicParam *bean.PublicParam) {
+func (m *Notify) SetPublicParam(publicParam *PublicParam) {
 	m.PublicParam = publicParam
 }
 
-func (m *Notify) SetNoticeParam(noticeParam *bean.NoticeParam) {
+func (m *Notify) SetNoticeParam(noticeParam *NoticeParam) {
 	m.NoticeParam = noticeParam
 }
 
-func (m *Notify) DoPush(notify *Notify) (responeString string, err error) {
-	if notify.RootUrl == "" || notify.AccessSecret == "" || notify.PublicParam == nil || notify.NoticeParam == nil {
+func (n *Notify) DoACMP() (responeString string, err error) {
+	if n.RootUrl == "" || n.AccessSecret == "" || n.PublicParam == nil || n.NoticeParam == nil {
 		return "", errors.New("PushNotice param pointer shouldn't be nil")
 	}
-	publicParamStr, _ := notify.PublicParam.ToStringWithoutSignature()
-	noticeParamStr, _ := notify.NoticeParam.ToString()
-	urlstr := notify.RootUrl + "/?" + publicParamStr + noticeParamStr
+	publicParamStr, _ := n.PublicParam.ToStringWithoutSignature()
+	noticeParamStr, _ := n.NoticeParam.ToString()
+	urlstr := n.RootUrl + "/?" + publicParamStr + noticeParamStr
 	signstr, err := signature.SignatureString(urlstr, http.MethodGet)
 	if err != nil {
 		return "", errors.New("PushNotice signature.SignatureString err")
 	}
-	signaturestr, err := signature.GetSignature(signstr, notify.AccessSecret)
+	signaturestr, err := signature.GetSignature(signstr, n.AccessSecret)
 	if err != nil {
 		return "", errors.New("PushNotice signature.GetSignature err")
 	}

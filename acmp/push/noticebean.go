@@ -1,21 +1,19 @@
-package bean
+package push
 
 import (
 	"encoding/json"
 	"errors"
 )
 
-type noticeType string
-
 const (
-	PushNoticeToAndroid noticeType = "PushNoticeToAndroid"
-	PushNoticeToiOS                = "PushNoticeToiOS"
+	PushNoticeToAndroid string = "PushNoticeToAndroid"
+	PushNoticeToiOS            = "PushNoticeToiOS"
 )
 
 type NoticeParam struct {
-	Action        noticeType         `json:"action"`
+	Action        string             `json:"action"`
 	AppKey        string             `json:"app_key"`
-	Target        targetType         `json:"target"`
+	Target        string             `json:"target"`
 	TargetValue   string             `json:"target_value"`
 	Title         string             `json:"title"`
 	Body          string             `json:"body"`
