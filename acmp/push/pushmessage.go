@@ -9,18 +9,26 @@ import (
 	"net/http"
 )
 
-func PushMessage(rootUrl, accessSecret string, publicParam *bean.PublicParam, noticeParam *bean.MessageParam) (responeString string, err error) {
-	if publicParam == nil || noticeParam == nil {
+type Message struct {
+	RootUrl string
+	AccessSecret string
+	PublicParam *bean.PublicParam
+	MessageParam *bean.MessageParam
+}
+
+
+func PushMessage(m *Message) (responeString string, err error) {
+	if m.PublicParam == nil || m.MessageParam == nil {
 		return "", errors.New("PushMessage param pointer shouldn't be nil")
 	}
-	publicParamStr, _ := publicParam.ToStringWithoutSignature()
-	noticeParamStr, _ := noticeParam.ToString()
-	urlstr := rootUrl + "/?" + publicParamStr + noticeParamStr
+	PublicParamStr, _ := m.PublicParam.ToStringWithoutSignature()
+	noticeParamStr, _ := m.MessageParam.ToString()
+	urlstr := m.RootUrl + "/?" + PublicParamStr + noticeParamStr
 	signstr, err := signature.SignatureString(urlstr, http.MethodGet)
 	if err != nil {
 		return "", errors.New("PushMessage signature.SignatureString err")
 	}
-	signaturestr, err := signature.GetSignature(signstr, accessSecret)
+	signaturestr, err := signature.GetSignature(signstr, m.AccessSecret)
 	if err != nil {
 		return "", errors.New("PushMessage signature.GetSignature err")
 	}

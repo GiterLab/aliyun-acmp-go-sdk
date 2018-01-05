@@ -45,20 +45,20 @@ type MessageParam struct {
 	Body        string      `json:"body"`
 }
 
-func (this *MessageParam) ToString() (paramstrp string, err error) {
-	if this == nil {
+func (m *MessageParam) ToString() (paramstrp string, err error) {
+	if m == nil {
 		return "", errors.New("MessageParam pointer shouldn't be nil")
 	}
-	if this.Action == "" || this.AppKey == "" || this.Target == "" || this.TargetValue == "" || this.Title == "" || this.Body == "" {
+	if m.Action == "" || m.AppKey == "" || m.Target == "" || m.TargetValue == "" || m.Title == "" || m.Body == "" {
 		return "", errors.New("MessageParam some perpoties shouldn't be nil")
 	}
-	if this.Action != PushMessageToAndroid || this.Action != PushMessageToiOS {
+	if m.Action != PushMessageToAndroid || m.Action != PushMessageToiOS {
 		return "", errors.New("MessageParam Action should be PushMessageToAndroid or PushMessageToiOS")
 	}
-	if this.Target != DEVICE || this.Target != ACCOUNT || this.Target != ALIAS || this.Target != TAG || this.Target != ALL {
+	if m.Target != DEVICE || m.Target != ACCOUNT || m.Target != ALIAS || m.Target != TAG || m.Target != ALL {
 		return "", errors.New("MessageParam Target should be DEVICE, ACCOUNT,ALIAS,TAG,ALL or PushMessageToiOS")
 	}
 	var headstr string
-	headstr += "Action=" + this.Action + "&AppKey=" + this.AppKey + "&Target=" + this.Target + "&TargetValue=" + this.TargetValue + "&Title=" + this.Title + "&Body=" + this.Body
+	headstr += "Action=" + m.Action + "&AppKey=" + m.AppKey + "&Target=" + m.Target + "&TargetValue=" + m.TargetValue + "&Title=" + m.Title + "&Body=" + m.Body
 	return headstr, nil
 }

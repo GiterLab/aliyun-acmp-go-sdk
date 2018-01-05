@@ -22,27 +22,27 @@ type NoticeParam struct {
 	ExtParameters *map[string]string `json:"ext_parameters"`
 }
 
-func (this *NoticeParam) ToString() (paramstrp string, err error) {
-	if this == nil {
+func (n *NoticeParam) ToString() (paramstrp string, err error) {
+	if n == nil {
 		return "", errors.New("NoticeParam pointer shouldn't be nil")
 	}
-	if this.Action == "" || this.AppKey == "" || this.Target == "" || this.TargetValue == "" || this.Title == "" || this.Body == "" {
+	if n.Action == "" || n.AppKey == "" || n.Target == "" || n.TargetValue == "" || n.Title == "" || n.Body == "" {
 		return "", errors.New("NoticeParam some perpoties shouldn't be nil")
 	}
-	if this.Action != PushNoticeToAndroid || this.Action != PushNoticeToiOS {
+	if n.Action != PushNoticeToAndroid || n.Action != PushNoticeToiOS {
 		return "", errors.New("NoticeParam Action should be PushNoticeToAndroid or PushNoticeToiOS")
 	}
-	if this.Target != DEVICE || this.Target != ACCOUNT || this.Target != ALIAS || this.Target != TAG || this.Target != ALL {
+	if n.Target != DEVICE || n.Target != ACCOUNT || n.Target != ALIAS || n.Target != TAG || n.Target != ALL {
 		return "", errors.New("NoticeParam Target should be DEVICE, ACCOUNT,ALIAS,TAG,ALL or PushMessageToiOS")
 	}
 	var headstr string
-	if this.ExtParameters != nil {
-		b, err := json.Marshal(this.ExtParameters)
+	if n.ExtParameters != nil {
+		b, err := json.Marshal(n.ExtParameters)
 		if err != nil {
 			return "", err
 		}
 		headstr += "ExtParameters=" + string(b) + "&"
 	}
-	headstr += "Action=" + this.Action + "&AppKey=" + this.AppKey + "&Target=" + this.Target + "&TargetValue=" + this.TargetValue + "&Title=" + this.Title + "&Body=" + this.Body
+	headstr += "Action=" + n.Action + "&AppKey=" + n.AppKey + "&Target=" + n.Target + "&TargetValue=" + n.TargetValue + "&Title=" + n.Title + "&Body=" + n.Body
 	return headstr, nil
 }

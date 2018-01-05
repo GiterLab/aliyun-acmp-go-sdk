@@ -9,23 +9,30 @@ import (
 	"net/http"
 )
 
-func PushNotice(rootUrl, accessSecret string, publicParam *bean.PublicParam, noticeParam *bean.NoticeParam) (responeString string, err error) {
-	if publicParam == nil || noticeParam == nil {
+type Notify struct {
+	RootUrl string
+	AccessSecret string
+	PublicParam *bean.PublicParam
+	NoticeParam *bean.NoticeParam
+}
+
+func PushNotice(notify *Notify) (responeString string, err error) {
+	if notify.PublicParam == nil || notify.NoticeParam == nil {
 		return "", errors.New("PushNotice param pointer shouldn't be nil")
 	}
-	publicParamStr, _ := publicParam.ToStringWithoutSignature()
-	noticeParamStr, _ := noticeParam.ToString()
-	urlstr := rootUrl + "/?" + publicParamStr + noticeParamStr
+	publicParamStr, _ := notify.PublicParam.ToStringWithoutSignature()
+	noticeParamStr, _ := notify.NoticeParam.ToString()
+	urlstr := notify.RootUrl + "/?" + publicParamStr + noticeParamStr
 	signstr, err := signature.SignatureString(urlstr, http.MethodGet)
 	if err != nil {
 		return "", errors.New("PushNotice signature.SignatureString err")
 	}
-	signaturestr, err := signature.GetSignature(signstr, accessSecret)
+	signaturestr, err := signature.GetSignature(signstr, notify.AccessSecret)
 	if err != nil {
 		return "", errors.New("PushNotice signature.GetSignature err")
 	}
 	finalUrlStr := urlstr + "&Signature=" + signaturestr
-	fmt.Println(finalUrlStr)
+	fmt.Println("finalUrlStr---->:",finalUrlStr)
 	resp, err := http.Get(finalUrlStr)
 	if err != nil {
 		return "", errors.New("PushNotice http.Get err")
