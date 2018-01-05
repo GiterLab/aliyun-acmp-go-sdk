@@ -8,6 +8,7 @@ import (
 
 func main() {
 
+	//push notify to terminal
 	//publicParam's all property should be set
 	publicParam := &bean.PublicParam{}
 
@@ -23,6 +24,7 @@ func main() {
 		fmt.Println(returnNotify)
 	}
 
+	//push message to terminal
 	//messageParam's most property should be set
 	messageParam := &bean.MessageParam{}
 	message := &push.Message{}
