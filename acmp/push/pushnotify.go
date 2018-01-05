@@ -10,14 +10,30 @@ import (
 )
 
 type Notify struct {
-	RootUrl string
+	RootUrl      string
 	AccessSecret string
-	PublicParam *bean.PublicParam
-	NoticeParam *bean.NoticeParam
+	PublicParam  *bean.PublicParam
+	NoticeParam  *bean.NoticeParam
 }
 
-func PushNotice(notify *Notify) (responeString string, err error) {
-	if notify.PublicParam == nil || notify.NoticeParam == nil {
+func (m *Notify) SetRootUrl(rootUrl string) {
+	m.RootUrl = rootUrl
+}
+
+func (m *Notify) SetAccessSecret(accessSecret string) {
+	m.AccessSecret = accessSecret
+}
+
+func (m *Notify) SetPublicParam(publicParam *bean.PublicParam) {
+	m.PublicParam = publicParam
+}
+
+func (m *Notify) SetNoticeParam(noticeParam *bean.NoticeParam) {
+	m.NoticeParam = noticeParam
+}
+
+func (m *Notify) DoPush(notify *Notify) (responeString string, err error) {
+	if notify.RootUrl == "" || notify.AccessSecret == "" || notify.PublicParam == nil || notify.NoticeParam == nil {
 		return "", errors.New("PushNotice param pointer shouldn't be nil")
 	}
 	publicParamStr, _ := notify.PublicParam.ToStringWithoutSignature()
@@ -32,7 +48,7 @@ func PushNotice(notify *Notify) (responeString string, err error) {
 		return "", errors.New("PushNotice signature.GetSignature err")
 	}
 	finalUrlStr := urlstr + "&Signature=" + signaturestr
-	fmt.Println("finalUrlStr---->:",finalUrlStr)
+	fmt.Println("finalUrlStr---->:", finalUrlStr)
 	resp, err := http.Get(finalUrlStr)
 	if err != nil {
 		return "", errors.New("PushNotice http.Get err")

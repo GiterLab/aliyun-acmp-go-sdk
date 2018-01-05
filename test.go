@@ -1,38 +1,38 @@
 package main
 
 import (
-	"aliyun-acmp-go-sdk/acmp/signature"
+	"aliyun-acmp-go-sdk/acmp/bean"
+	"aliyun-acmp-go-sdk/acmp/push"
 	"fmt"
-	"net/http"
 )
 
 func main() {
-	/*
-		str:="abcde"
-		var strp string
-		strp=&str
-		keys:="cdefg"
-		var keysp string
-		keysp=&keys
-		strr,err:=hmacsha1.GetHmacStr(strp,keysp)
-		if err==nil {
-			fmt.Print(*strr)
-		}*/
 
-	httpurl := "http://cloudpush.aliyuncs.com/?Format=XML&AccessKeyId=testid&Action=GetDeviceInfos&SignatureMethod=HMAC-SHA1&RegionId=cn-hangzhou&Devices=e2ba19de97604f55b165576736477b74%2C92a1da34bdfd4c9692714917ce22d53d&SignatureNonce=c4f5f0de-b3ff-4528-8a89-fa478bda8d80&SignatureVersion=1.0&Version=2016-08-01&AppKey=23267207&Timestamp=2016-03-29T03%3A59%3A24Z"
-	//var httpurlp string
-	//httpurlp = &httpurl
-	//httpmethod := "GET"
-	//var httpmethodp string
-	//httpmethodp = &httpmethod
-	signstr, err := signature.SignatureString(httpurl, http.MethodGet)
+	//publicParam's all property should be set
+	publicParam := &bean.PublicParam{}
+
+	//notifyParam's most property should be set
+	notifyParam := &bean.NoticeParam{}
+	notify := &push.Notify{}
+	notify.SetRootUrl("rootUrl")
+	notify.SetAccessSecret("accesssecret")
+	notify.SetPublicParam(publicParam)
+	notify.SetNoticeParam(notifyParam)
+	returnNotify, err := notify.DoPush(notify)
 	if err == nil {
-		fmt.Println(signstr)
+		fmt.Println(returnNotify)
 	}
-	keys := "testsecret"
-	signstrr, err := signature.GetSignature(signstr, keys)
+
+	//messageParam's most property should be set
+	messageParam := &bean.MessageParam{}
+	message := &push.Message{}
+	message.SetRootUrl("rootUrl")
+	message.SetAccessSecret("accesssecret")
+	message.SetPublicParam(publicParam)
+	message.SetMessageParam(messageParam)
+	returnMessage, err := message.DoPush(message)
 	if err == nil {
-		fmt.Println(signstrr)
+		fmt.Println(returnMessage)
 	}
 
 }
