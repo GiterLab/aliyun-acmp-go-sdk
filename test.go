@@ -1,19 +1,19 @@
 package main
 
 import (
-	"aliyun-acmp-go-sdk/acmp/push"
+	"aliyun-acmp-go-sdk/acmp/acmp"
 	"fmt"
 )
 
 func main() {
 
-	//push notify to terminal
+	//acmp notify to terminal
 	//publicParam's all property should be set
-	publicParam := &push.PublicParam{}
+	publicParam := &acmp.PublicParam{}
 
 	//notifyParam's most property should be set
-	notifyParam := &push.NoticeParam{}
-	notify := &push.Notify{}
+	notifyParam := &acmp.NoticeParam{}
+	notify := &acmp.Notify{}
 	notify.SetRootUrl("rootUrl")
 	notify.SetAccessSecret("accesssecret")
 	notify.SetPublicParam(publicParam)
@@ -23,10 +23,10 @@ func main() {
 		fmt.Println(returnNotify)
 	}
 
-	//push message to terminal
+	//acmp message to terminal
 	//messageParam's most property should be set
-	messageParam := &push.MessageParam{}
-	message := &push.Message{}
+	messageParam := &acmp.MessageParam{}
+	message := &acmp.Message{}
 	message.SetRootUrl("rootUrl")
 	message.SetAccessSecret("accesssecret")
 	message.SetPublicParam(publicParam)
