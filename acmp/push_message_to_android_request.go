@@ -3,13 +3,16 @@ package acmp
 import (
 	"encoding/json"
 	"errors"
+	"strconv"
 )
 
-type PushMessge2AndroidRequest struct {
+// PushMessageToAndroidRequest 推送消息结构体
+type PushMessageToAndroidRequest struct {
 	Request *Request
 }
 
-func (p *PushMessge2AndroidRequest) DoActionWithException() (resp *PushMessageResponse, err error) {
+// DoActionWithException 发起请求
+func (p *PushMessageToAndroidRequest) DoActionWithException() (resp *PushMessageResponse, err error) {
 	if p != nil && p.Request != nil {
 		resp := &PushMessageResponse{}
 		body, httpCode, err := p.Request.Do("PushMessageToAndroid")
@@ -29,18 +32,20 @@ func (p *PushMessge2AndroidRequest) DoActionWithException() (resp *PushMessageRe
 	return nil, errors.New("SendRequest is nil")
 }
 
-func PushMessage2Android(target, targetValue, title, body string) *PushMessge2AndroidRequest {
+// PushMessage2Android 推送安卓消息接口
+func PushMessage2Android(appKey int, target, targetValue, title, body string) *PushMessageToAndroidRequest {
 	if target == "" || targetValue == "" {
 		return nil
 	}
 	req := newRequset()
 	req.Put("Version", "2016-08-01")
 	req.Put("Action", "PushMessageToAndroid")
+	req.Put("AppKey", strconv.Itoa(appKey))
 	req.Put("Target", target)
 	req.Put("TargetValue", targetValue)
 	req.Put("Title", title)
 	req.Put("Body", body)
 
-	r := &PushMessge2AndroidRequest{Request: req}
+	r := &PushMessageToAndroidRequest{Request: req}
 	return r
 }

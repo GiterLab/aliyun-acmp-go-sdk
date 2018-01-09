@@ -10,12 +10,13 @@ func main() {
 	acmp.HTTPDebugEnable = true
 	acmp.SetACLClient(ACCESSID, ACCESSKEY)
 
+	// 推送通知给iOS设备
 	extParameters := make(map[string]interface{}, 0)
-	pushNotifyRespon, err := acmp.PushNotify2Ios("target", "targetValue", "apnsEnv", "body").
+	pushNoticeRespon, err := acmp.PushNoticeToiOS(23267207, "target", "targetValue", "apnsEnv", "body").
 		SetPushTitle("title").SetPushExtParameters(extParameters).DoActionWithException()
 	if err != nil {
-		fmt.Println("PushNotify2Ios failed", err, pushNotifyRespon.Error())
+		fmt.Println("PushNoticeToiOS failed", err, pushNoticeRespon.Error())
 		os.Exit(0)
 	}
-	fmt.Println("PushNotify2Ios successed", pushNotifyRespon.String())
+	fmt.Println("PushNoticeToiOS successed", pushNoticeRespon.String())
 }

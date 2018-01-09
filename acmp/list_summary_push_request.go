@@ -4,8 +4,10 @@ import (
 	"encoding/json"
 	"errors"
 	"strconv"
+	"time"
 )
 
+// MessageInfo 消息结构体
 type MessageInfo struct {
 	MessageId  string
 	Type       int
@@ -19,6 +21,7 @@ type MessageInfo struct {
 	PushTime   int64
 }
 
+// SummaryMessageInfos 消息结构体
 type SummaryMessageInfos struct {
 	Total        int
 	Page         int
@@ -26,11 +29,13 @@ type SummaryMessageInfos struct {
 	MessageInfos []*MessageInfo
 }
 
+// ListSummaryPushResponse 请求响应
 type ListSummaryPushResponse struct {
 	ErrorMessage
 	SummaryMessageInfos *SummaryMessageInfos
 }
 
+// GetSummaryMessageInfos 获取请求结构体的get方法
 func (l *ListSummaryPushResponse) GetSummaryMessageInfos() *SummaryMessageInfos {
 	if l != nil && l.SummaryMessageInfos != nil {
 		return l.SummaryMessageInfos
@@ -38,6 +43,7 @@ func (l *ListSummaryPushResponse) GetSummaryMessageInfos() *SummaryMessageInfos 
 	return nil
 }
 
+// String 序列化响应
 func (l *ListSummaryPushResponse) String() string {
 	body, err := json.Marshal(l)
 	if err != nil {
@@ -46,10 +52,12 @@ func (l *ListSummaryPushResponse) String() string {
 	return string(body)
 }
 
+// ListSummaryPushMessageInfoRequest http请求结构体
 type ListSummaryPushMessageInfoRequest struct {
 	Request *Request
 }
 
+// DoActionWithException 发起http请求
 func (l *ListSummaryPushMessageInfoRequest) DoActionWithException() (resp *ListSummaryPushResponse, err error) {
 	if l != nil && l.Request != nil {
 		resp := &ListSummaryPushResponse{}
@@ -70,13 +78,14 @@ func (l *ListSummaryPushMessageInfoRequest) DoActionWithException() (resp *ListS
 	return nil, errors.New("SendRequest is nil")
 }
 
-func ListSummaryPush(appKey, startTime, endTime, pushType string) *ListSummaryPushMessageInfoRequest {
+// ListSummaryPush 查询推送列表接口
+func ListSummaryPush(appKey int, pushType string, startTime, endTime int64) *ListSummaryPushMessageInfoRequest {
 	req := newRequset()
 	req.Put("Version", "2016-08-01")
 	req.Put("Action", "ListPushRecords")
-	req.Put("AppKey", appKey)
-	req.Put("StartTime", startTime)
-	req.Put("EndTime", endTime)
+	req.Put("AppKey", strconv.Itoa(appKey))
+	req.Put("StartTime", time.Unix(startTime, 0).Format("YYYY-MM-DDThh:mm:ssZ"))
+	req.Put("EndTime", time.Unix(endTime, 0).Format("YYYY-MM-DDThh:mm:ssZ"))
 	req.Put("PushType", pushType)
 
 	r := &ListSummaryPushMessageInfoRequest{Request: req}

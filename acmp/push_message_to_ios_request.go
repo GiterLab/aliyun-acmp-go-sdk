@@ -3,20 +3,24 @@ package acmp
 import (
 	"encoding/json"
 	"errors"
+	"strconv"
 )
 
+// PushMessageResponse 推送消息响应结构体
 type PushMessageResponse struct {
 	ErrorMessage
 	MessageId string `json:"message_id"`
 }
 
-func (p *PushMessageResponse) getMessageId() string {
+// getMessageId 获取messageId
+func (p *PushMessageResponse) GetMessageId() string {
 	if p != nil && p.MessageId != "" {
 		return p.MessageId
 	}
 	return ""
 }
 
+// String 序列化响应
 func (p *PushMessageResponse) String() string {
 	body, err := json.Marshal(p)
 	if err != nil {
@@ -25,11 +29,13 @@ func (p *PushMessageResponse) String() string {
 	return string(body)
 }
 
-type PushMessge2IosRequest struct {
+// PushMessageToiOSRequest http请求
+type PushMessageToiOSRequest struct {
 	Request *Request
 }
 
-func (p *PushMessge2IosRequest) DoActionWithException() (resp *PushMessageResponse, err error) {
+// DoActionWithException 发送http请求
+func (p *PushMessageToiOSRequest) DoActionWithException() (resp *PushMessageResponse, err error) {
 	if p != nil && p.Request != nil {
 		resp := &PushMessageResponse{}
 		body, httpCode, err := p.Request.Do("PushMessageToIos")
@@ -49,17 +55,19 @@ func (p *PushMessge2IosRequest) DoActionWithException() (resp *PushMessageRespon
 	return nil, errors.New("SendRequest is nil")
 }
 
-func PushMessage2Ios(target, targetValue, body string) *PushMessge2IosRequest {
+// PushMessageToiOSRequestos 推送iOS消息接口
+func PushMessageToiOSRequestos(appKey int, target, targetValue, body string) *PushMessageToiOSRequest {
 	if target == "" || targetValue == "" {
 		return nil
 	}
 	req := newRequset()
 	req.Put("Version", "2016-08-01")
 	req.Put("Action", "PushMessageToIos")
+	req.Put("AppKey", strconv.Itoa(appKey))
 	req.Put("Target", target)
 	req.Put("TargetValue", targetValue)
 	req.Put("Body", body)
 
-	r := &PushMessge2IosRequest{Request: req}
+	r := &PushMessageToiOSRequest{Request: req}
 	return r
 }

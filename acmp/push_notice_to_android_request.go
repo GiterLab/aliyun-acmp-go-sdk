@@ -3,15 +3,18 @@ package acmp
 import (
 	"encoding/json"
 	"errors"
+	"strconv"
 )
 
-type PushNotify2AndroidRequest struct {
+// PushNoticeToAndroidRequest 推送通知到android平台请求结构体
+type PushNoticeToAndroidRequest struct {
 	Request *Request
 }
 
-func (p *PushNotify2AndroidRequest) DoActionWithException() (resp *PushNotifyResponse, err error) {
+// DoActionWithException 发起http请求
+func (p *PushNoticeToAndroidRequest) DoActionWithException() (resp *PushNoticeResponse, err error) {
 	if p != nil && p.Request != nil {
-		resp := &PushNotifyResponse{}
+		resp := &PushNoticeResponse{}
 		body, httpCode, err := p.Request.Do("PushMessageToIos")
 		resp.SetHTTPCode(httpCode)
 		if err != nil {
@@ -29,23 +32,26 @@ func (p *PushNotify2AndroidRequest) DoActionWithException() (resp *PushNotifyRes
 	return nil, errors.New("SendRequest is nil")
 }
 
-func PushNotify2Android(target, targetValue, title, body string) *PushNotify2AndroidRequest {
+// PushNotice2Android 推送通知到android平台接口
+func PushNotice2Android(appKey int, target, targetValue, title, body string) *PushNoticeToAndroidRequest {
 	if target == "" || targetValue == "" {
 		return nil
 	}
 	req := newRequset()
 	req.Put("Version", "2016-08-01")
 	req.Put("Action", "PushMessageToIos")
+	req.Put("AppKey", strconv.Itoa(appKey))
 	req.Put("Target", target)
 	req.Put("TargetValue", targetValue)
 	req.Put("Title", title)
 	req.Put("Body", body)
 
-	r := &PushNotify2AndroidRequest{Request: req}
+	r := &PushNoticeToAndroidRequest{Request: req}
 	return r
 }
 
-func (p *PushNotify2AndroidRequest) SetPushExtParameters(extParameters map[string]interface{}) *PushNotify2AndroidRequest {
+// SetPushExtParameters 设置推送额外的参数，可选
+func (p *PushNoticeToAndroidRequest) SetPushExtParameters(extParameters map[string]interface{}) *PushNoticeToAndroidRequest {
 	if p == nil || p.Request == nil {
 		return nil
 	}

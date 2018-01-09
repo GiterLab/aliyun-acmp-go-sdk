@@ -3,21 +3,25 @@ package acmp
 import (
 	"encoding/json"
 	"errors"
+	"strconv"
 )
 
-type PushNotifyResponse struct {
+// PushNoticeResponse 通知响应结构体
+type PushNoticeResponse struct {
 	ErrorMessage
 	MessageId string `json:"message_id"`
 }
 
-func (p *PushNotifyResponse) getMessageId() string {
+// getMessageId 获取通知响应的messageId
+func (p *PushNoticeResponse) GetMessageId() string {
 	if p != nil && p.MessageId != "" {
 		return p.MessageId
 	}
 	return ""
 }
 
-func (p *PushNotifyResponse) String() string {
+// String 序列化响应
+func (p *PushNoticeResponse) String() string {
 	body, err := json.Marshal(p)
 	if err != nil {
 		return ""
@@ -25,13 +29,15 @@ func (p *PushNotifyResponse) String() string {
 	return string(body)
 }
 
-type PushNotify2IosRequest struct {
+// PushNoticeToiOSRequest 通知请求结构体
+type PushNoticeToiOSRequest struct {
 	Request *Request
 }
 
-func (p *PushNotify2IosRequest) DoActionWithException() (resp *PushNotifyResponse, err error) {
+// DoActionWithException 发起http请求
+func (p *PushNoticeToiOSRequest) DoActionWithException() (resp *PushNoticeResponse, err error) {
 	if p != nil && p.Request != nil {
-		resp := &PushNotifyResponse{}
+		resp := &PushNoticeResponse{}
 		body, httpCode, err := p.Request.Do("PushMessageToIos")
 		resp.SetHTTPCode(httpCode)
 		if err != nil {
@@ -49,28 +55,35 @@ func (p *PushNotify2IosRequest) DoActionWithException() (resp *PushNotifyRespons
 	return nil, errors.New("SendRequest is nil")
 }
 
-func PushNotify2Ios(target, targetValue, apnsEnv, body string) *PushMessge2IosRequest {
+// PushNoticeToiOS 推送通知到iOS平台接口
+func PushNoticeToiOS(appKey int, target, targetValue, apnsEnv, body string) *PushMessageToiOSRequest {
 	if target == "" || targetValue == "" {
 		return nil
 	}
 	req := newRequset()
 	req.Put("Version", "2016-08-01")
 	req.Put("Action", "PushMessageToIos")
+	req.Put("AppKey", strconv.Itoa(appKey))
 	req.Put("Target", target)
 	req.Put("TargetValue", targetValue)
 	req.Put("ApnsEnv", apnsEnv)
 	req.Put("Body", body)
 
-	r := &PushMessge2IosRequest{Request: req}
+	r := &PushMessageToiOSRequest{Request: req}
 	return r
 }
 
-func (p *PushMessge2IosRequest) SetPushTitle(title string) *PushMessge2IosRequest {
+// SetPushTitle 设置通知title，可选
+func (p *PushMessageToiOSRequest) SetPushTitle(title string) *PushMessageToiOSRequest {
+	if p == nil || p.Request == nil {
+		return nil
+	}
 	p.Request.Put("Title", title)
 	return p
 }
 
-func (p *PushMessge2IosRequest) SetPushExtParameters(extParameters map[string]interface{}) *PushMessge2IosRequest {
+// SetPushExtParameters 设置通知额外的参数，可选
+func (p *PushMessageToiOSRequest) SetPushExtParameters(extParameters map[string]interface{}) *PushMessageToiOSRequest {
 	if p == nil || p.Request == nil {
 		return nil
 	}
