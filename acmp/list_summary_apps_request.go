@@ -64,7 +64,7 @@ func (l *ListSummaryAppsRequest) DoActionWithException() (resp *ListSummaryAppsR
 		}
 		return resp, nil
 	}
-	return nil, errors.New("SendSmsRequest is nil")
+	return nil, errors.New("SendRequest is nil")
 }
 
 // ListSummaryApps APP概览列表接口
