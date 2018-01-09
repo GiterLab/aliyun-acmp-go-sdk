@@ -70,11 +70,11 @@ func (l *ListSummaryPushMessageInfoRequest) DoActionWithException() (resp *ListS
 	return nil, errors.New("SendRequest is nil")
 }
 
-func ListSummaryPush(appKey,startTime, endTime, pushType string) *ListSummaryPushMessageInfoRequest {
+func ListSummaryPush(appKey, startTime, endTime, pushType string) *ListSummaryPushMessageInfoRequest {
 	req := newRequset()
 	req.Put("Version", "2016-08-01")
 	req.Put("Action", "ListPushRecords")
-	req.Put("AppKey",appKey)
+	req.Put("AppKey", appKey)
 	req.Put("StartTime", startTime)
 	req.Put("EndTime", endTime)
 	req.Put("PushType", pushType)
