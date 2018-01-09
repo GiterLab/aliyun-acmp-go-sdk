@@ -10,8 +10,8 @@ type PushNotifyResponse struct {
 	MessageId string `json:"message_id"`
 }
 
-func (p *PushNotifyResponse)getMessageId() string  {
-	if p!=nil&& p.MessageId!="" {
+func (p *PushNotifyResponse) getMessageId() string {
+	if p != nil && p.MessageId != "" {
 		return p.MessageId
 	}
 	return ""
@@ -29,9 +29,9 @@ type PushNotify2IosRequest struct {
 	Request *Request
 }
 
-func (p *PushNotify2IosRequest) DoActionWithException()(resp *PushNotifyResponse,err error){
-	if p!=nil&&p.Request!=nil {
-		resp:=&PushNotifyResponse{}
+func (p *PushNotify2IosRequest) DoActionWithException() (resp *PushNotifyResponse, err error) {
+	if p != nil && p.Request != nil {
+		resp := &PushNotifyResponse{}
 		body, httpCode, err := p.Request.Do("PushMessageToIos")
 		resp.SetHTTPCode(httpCode)
 		if err != nil {
@@ -46,32 +46,35 @@ func (p *PushNotify2IosRequest) DoActionWithException()(resp *PushNotifyResponse
 		}
 		return resp, nil
 	}
-	return nil,errors.New("SendRequest is nil")
+	return nil, errors.New("SendRequest is nil")
 }
 
-func PushNotify2Ios(target,targetValue,apnsEnv,body string) *PushMessge2IosRequest {
-	if target==""||targetValue=="" {
+func PushNotify2Ios(target, targetValue, apnsEnv, body string) *PushMessge2IosRequest {
+	if target == "" || targetValue == "" {
 		return nil
 	}
-	req:=newRequset()
+	req := newRequset()
 	req.Put("Version", "2016-08-01")
 	req.Put("Action", "PushMessageToIos")
-	req.Put("Target",target)
-	req.Put("TargetValue",targetValue)
-	req.Put("ApnsEnv",apnsEnv)
-	req.Put("Body",body)
+	req.Put("Target", target)
+	req.Put("TargetValue", targetValue)
+	req.Put("ApnsEnv", apnsEnv)
+	req.Put("Body", body)
 
-	r:=&PushMessge2IosRequest{Request:req}
+	r := &PushMessge2IosRequest{Request: req}
 	return r
 }
 
 func (p *PushMessge2IosRequest) SetPushTitle(title string) *PushMessge2IosRequest {
-	p.Request.Put("Title",title)
+	p.Request.Put("Title", title)
 	return p
 }
 
 func (p *PushMessge2IosRequest) SetPushExtParameters(extParameters map[string]interface{}) *PushMessge2IosRequest {
-	body,_:=json.Marshal(extParameters)
-	p.Request.Put("ExtParameters",string(body))
+	if p == nil || p.Request == nil {
+		return nil
+	}
+	body, _ := json.Marshal(extParameters)
+	p.Request.Put("ExtParameters", string(body))
 	return p
 }

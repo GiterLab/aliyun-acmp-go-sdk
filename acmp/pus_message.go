@@ -9,9 +9,9 @@ type PushMessge2AndroidRequest struct {
 	Request *Request
 }
 
-func (p *PushMessge2AndroidRequest) DoActionWithException()(resp *PushMessageResponse,err error){
-	if p!=nil&&p.Request!=nil {
-		resp:=&PushMessageResponse{}
+func (p *PushMessge2AndroidRequest) DoActionWithException() (resp *PushMessageResponse, err error) {
+	if p != nil && p.Request != nil {
+		resp := &PushMessageResponse{}
 		body, httpCode, err := p.Request.Do("PushMessageToAndroid")
 		resp.SetHTTPCode(httpCode)
 		if err != nil {
@@ -26,21 +26,21 @@ func (p *PushMessge2AndroidRequest) DoActionWithException()(resp *PushMessageRes
 		}
 		return resp, nil
 	}
-	return nil,errors.New("SendRequest is nil")
+	return nil, errors.New("SendRequest is nil")
 }
 
-func PushMessage2Android(target,targetValue,title,body string) *PushMessge2AndroidRequest {
-	if target==""||targetValue=="" {
+func PushMessage2Android(target, targetValue, title, body string) *PushMessge2AndroidRequest {
+	if target == "" || targetValue == "" {
 		return nil
 	}
-	req:=newRequset()
+	req := newRequset()
 	req.Put("Version", "2016-08-01")
 	req.Put("Action", "PushMessageToAndroid")
-	req.Put("Target",target)
-	req.Put("TargetValue",targetValue)
-	req.Put("Title",title)
-	req.Put("Body",body)
+	req.Put("Target", target)
+	req.Put("TargetValue", targetValue)
+	req.Put("Title", title)
+	req.Put("Body", body)
 
-	r:=&PushMessge2AndroidRequest{Request:req}
+	r := &PushMessge2AndroidRequest{Request: req}
 	return r
 }

@@ -10,8 +10,8 @@ type PushMessageResponse struct {
 	MessageId string `json:"message_id"`
 }
 
-func (p *PushMessageResponse)getMessageId() string  {
-	if p!=nil&& p.MessageId!="" {
+func (p *PushMessageResponse) getMessageId() string {
+	if p != nil && p.MessageId != "" {
 		return p.MessageId
 	}
 	return ""
@@ -29,9 +29,9 @@ type PushMessge2IosRequest struct {
 	Request *Request
 }
 
-func (p *PushMessge2IosRequest) DoActionWithException()(resp *PushMessageResponse,err error){
-	if p!=nil&&p.Request!=nil {
-		resp:=&PushMessageResponse{}
+func (p *PushMessge2IosRequest) DoActionWithException() (resp *PushMessageResponse, err error) {
+	if p != nil && p.Request != nil {
+		resp := &PushMessageResponse{}
 		body, httpCode, err := p.Request.Do("PushMessageToIos")
 		resp.SetHTTPCode(httpCode)
 		if err != nil {
@@ -46,21 +46,21 @@ func (p *PushMessge2IosRequest) DoActionWithException()(resp *PushMessageRespons
 		}
 		return resp, nil
 	}
-	return nil,errors.New("SendRequest is nil")
+	return nil, errors.New("SendRequest is nil")
 }
 
-func PushMessage2Ios(target,targetValue,title,body string) *PushMessge2IosRequest {
-	if target==""||targetValue=="" {
+func PushMessage2Ios(target, targetValue, title, body string) *PushMessge2IosRequest {
+	if target == "" || targetValue == "" {
 		return nil
 	}
-	req:=newRequset()
+	req := newRequset()
 	req.Put("Version", "2016-08-01")
 	req.Put("Action", "PushMessageToIos")
-	req.Put("Target",target)
-	req.Put("TargetValue",targetValue)
-	req.Put("Title",title)
-	req.Put("Body",body)
+	req.Put("Target", target)
+	req.Put("TargetValue", targetValue)
+	req.Put("Title", title)
+	req.Put("Body", body)
 
-	r:=&PushMessge2IosRequest{Request:req}
+	r := &PushMessge2IosRequest{Request: req}
 	return r
 }
