@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa4fd664-2745-435b-86f1-1a31c4012ce3" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/example/CancelPush.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/example/ListSummaryPush.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/example/PushMessageAndroid.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/example/PushMessageIos.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/example/PushNotifyAndroid.go" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/example/PushNotifyIos.go" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/acmp/push_message_2_ios.go" afterPath="$PROJECT_DIR$/acmp/push_message_2_ios.go" />
-      <change beforePath="$PROJECT_DIR$/acmp/push_notify.go" afterPath="$PROJECT_DIR$/acmp/push_notify.go" />
+      <change beforePath="$PROJECT_DIR$/acmp/list_summary_push.go" afterPath="$PROJECT_DIR$/acmp/list_summary_push.go" />
+      <change beforePath="$PROJECT_DIR$/example/ListSummaryApps.go" afterPath="$PROJECT_DIR$/example/ListSummaryApps.go" />
+      <change beforePath="$PROJECT_DIR$/example/ListSummaryPush.go" afterPath="$PROJECT_DIR$/example/ListSummaryPush.go" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,21 +18,29 @@
       <file leaf-file-name="ListSummaryApps.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/example/ListSummaryApps.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="22" column="39" lean-forward="false" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+            <state relative-caret-position="105">
+              <caret line="12" column="40" lean-forward="true" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ListSummaryPush.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ListSummaryPush.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/example/ListSummaryPush.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-              <folding>
-                <element signature="e#14#84#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="180">
+              <caret line="16" column="18" lean-forward="true" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list_summary_push.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/acmp/list_summary_push.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="72" column="5" lean-forward="false" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -46,8 +48,8 @@
       <file leaf-file-name="PushMessageAndroid.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/example/PushMessageAndroid.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="19" selection-end-column="1" />
+            <state relative-caret-position="135">
+              <caret line="9" column="31" lean-forward="true" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
               <folding>
                 <element signature="e#14#84#0" expanded="true" />
               </folding>
@@ -59,7 +61,7 @@
         <entry file="file://$PROJECT_DIR$/example/PushMessageIos.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="315">
-              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding>
                 <element signature="e#14#84#0" expanded="true" />
               </folding>
@@ -79,11 +81,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CancelPush.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CancelPush.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/example/CancelPush.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="63" lean-forward="true" selection-start-line="17" selection-start-column="63" selection-end-line="17" selection-end-column="63" />
+            <state relative-caret-position="195">
+              <caret line="13" column="19" lean-forward="true" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
               <folding>
                 <element signature="e#14#84#0" expanded="true" />
               </folding>
@@ -95,7 +97,7 @@
         <entry file="file://$PROJECT_DIR$/acmp/push_notify.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="206">
-              <caret line="31" column="14" lean-forward="true" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="14" />
+              <caret line="31" column="14" lean-forward="false" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -105,7 +107,7 @@
         <entry file="file://$PROJECT_DIR$/acmp/push_notify_2_ios.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="218">
-              <caret line="51" column="13" lean-forward="true" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
+              <caret line="51" column="13" lean-forward="false" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -115,20 +117,10 @@
         <entry file="file://$PROJECT_DIR$/example/PushNotifyAndroid.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
-              <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+              <caret line="20" column="1" lean-forward="false" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
               <folding>
                 <element signature="e#14#84#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="push_message_2_ios.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/acmp/push_message_2_ios.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="51" column="16" lean-forward="false" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="16" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -156,8 +148,6 @@
         <option value="$PROJECT_DIR$/acmp/pus_message.go" />
         <option value="$PROJECT_DIR$/acmp/cancel_push_timer.go" />
         <option value="$PROJECT_DIR$/acmp/push_notify_2_ios.go" />
-        <option value="$PROJECT_DIR$/acmp/list_summary_push.go" />
-        <option value="$PROJECT_DIR$/example/ListSummaryPush.go" />
         <option value="$PROJECT_DIR$/example/PushMessageAndroid.go" />
         <option value="$PROJECT_DIR$/acmp/push_message_2_ios.go" />
         <option value="$PROJECT_DIR$/example/PushMessageIos.go" />
@@ -165,6 +155,9 @@
         <option value="$PROJECT_DIR$/example/PushNotifyAndroid.go" />
         <option value="$PROJECT_DIR$/example/PushNotifyIos.go" />
         <option value="$PROJECT_DIR$/example/CancelPush.go" />
+        <option value="$PROJECT_DIR$/acmp/list_summary_push.go" />
+        <option value="$PROJECT_DIR$/example/ListSummaryApps.go" />
+        <option value="$PROJECT_DIR$/example/ListSummaryPush.go" />
       </list>
     </option>
   </component>
@@ -241,6 +234,36 @@
       </list>
     </option>
   </component>
+  <component name="RunManager" selected="Go Build.go build ListSummaryPush.go (1)">
+    <configuration name="go build ListSummaryPush.go (1)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
+      <module name="aliyun-acmp-go-sdk" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/example/ListSummaryPush.go" />
+      <package value="github.com/GiterLab/aliyun-acmp-go-sdk" />
+      <directory value="$PROJECT_DIR$/" />
+    </configuration>
+    <configuration name="go build ListSummaryPush.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
+      <module name="aliyun-acmp-go-sdk" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <go_parameters value="-i" />
+      <kind value="DIRECTORY" />
+      <filePath value="$PROJECT_DIR$/example/ListSummaryPush.go" />
+      <package value="github.com/GiterLab/aliyun-acmp-go-sdk" />
+      <directory value="$PROJECT_DIR$/" />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Go Build.go build ListSummaryPush.go" />
+      <item index="1" class="java.lang.String" itemvalue="Go Build.go build ListSummaryPush.go (1)" />
+    </list>
+    <recent_temporary>
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Go Build.go build ListSummaryPush.go (1)" />
+        <item index="1" class="java.lang.String" itemvalue="Go Build.go build ListSummaryPush.go" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
@@ -252,7 +275,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30949107" sideWeight="0.503231" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32991204" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32991204" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30938417" sideWeight="0.49676898" order="7" side_tool="false" content_ui="tabs" />
@@ -269,6 +292,32 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -540,39 +589,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/acmp/list_summary_push.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="54" column="42" lean-forward="false" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
-          <folding>
-            <element signature="e#14#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/acmp/pus_message.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="489">
           <caret line="40" column="18" lean-forward="false" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/ListSummaryApps.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="22" column="39" lean-forward="false" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/PushMessageAndroid.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="19" selection-end-column="1" />
-          <folding>
-            <element signature="e#14#84#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -587,7 +608,7 @@
     <entry file="file://$PROJECT_DIR$/example/PushMessageIos.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
             <element signature="e#14#84#0" expanded="true" />
           </folding>
@@ -597,7 +618,7 @@
     <entry file="file://$PROJECT_DIR$/acmp/push_notify.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="206">
-          <caret line="31" column="14" lean-forward="true" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="14" />
+          <caret line="31" column="14" lean-forward="false" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -605,7 +626,7 @@
     <entry file="file://$PROJECT_DIR$/example/PushNotifyAndroid.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
-          <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+          <caret line="20" column="1" lean-forward="false" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
           <folding>
             <element signature="e#14#84#0" expanded="true" />
           </folding>
@@ -615,7 +636,7 @@
     <entry file="file://$PROJECT_DIR$/acmp/push_notify_2_ios.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
-          <caret line="51" column="13" lean-forward="true" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
+          <caret line="51" column="13" lean-forward="false" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -630,23 +651,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/ListSummaryPush.go">
+    <entry file="file://$PROJECT_DIR$/example/CancelPush.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+        <state relative-caret-position="195">
+          <caret line="13" column="19" lean-forward="true" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
           <folding>
             <element signature="e#14#84#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/CancelPush.go">
+    <entry file="file://$PROJECT_DIR$/example/PushMessageAndroid.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="63" lean-forward="true" selection-start-line="17" selection-start-column="63" selection-end-line="17" selection-end-column="63" />
+        <state relative-caret-position="135">
+          <caret line="9" column="31" lean-forward="true" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
           <folding>
             <element signature="e#14#84#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/acmp/list_summary_push.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="72" column="5" lean-forward="false" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/ListSummaryApps.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="12" column="40" lean-forward="true" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/ListSummaryPush.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="16" column="18" lean-forward="true" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>

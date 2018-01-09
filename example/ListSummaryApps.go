@@ -9,8 +9,8 @@ import (
 
 // modify it to yours
 const (
-	ACCESSID  = "your_accessid"
-	ACCESSKEY = "your_accesskey"
+	ACCESSID  = "your_accessid"               // "your_accessid"
+	ACCESSKEY = "your_accesskey"			  // "your_accesskey"
 )
 
 func main() {

@@ -10,7 +10,7 @@ func main() {
 	acmp.HTTPDebugEnable = true
 	acmp.SetACLClient(ACCESSID, ACCESSKEY)
 
-	respListSummaryPush, err := acmp.ListSummaryPush("startTime", "endTime", "pushType").
+	respListSummaryPush, err := acmp.ListSummaryPush("appKey","startTime", "endTime", "pushType").
 		SetPage(2).SetPageSize(20).DoActionWithException()
 	if err != nil {
 		fmt.Println("ListSummaryPush failed", err, respListSummaryPush.Error())
