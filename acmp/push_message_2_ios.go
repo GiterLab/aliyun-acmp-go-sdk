@@ -49,7 +49,7 @@ func (p *PushMessge2IosRequest) DoActionWithException() (resp *PushMessageRespon
 	return nil, errors.New("SendRequest is nil")
 }
 
-func PushMessage2Ios(target, targetValue, title, body string) *PushMessge2IosRequest {
+func PushMessage2Ios(target, targetValue, body string) *PushMessge2IosRequest {
 	if target == "" || targetValue == "" {
 		return nil
 	}
@@ -58,7 +58,6 @@ func PushMessage2Ios(target, targetValue, title, body string) *PushMessge2IosReq
 	req.Put("Action", "PushMessageToIos")
 	req.Put("Target", target)
 	req.Put("TargetValue", targetValue)
-	req.Put("Title", title)
 	req.Put("Body", body)
 
 	r := &PushMessge2IosRequest{Request: req}

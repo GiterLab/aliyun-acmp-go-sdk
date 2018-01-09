@@ -29,7 +29,7 @@ func (p *PushNotify2AndroidRequest) DoActionWithException() (resp *PushNotifyRes
 	return nil, errors.New("SendRequest is nil")
 }
 
-func PushNotify2Android(target, targetValue, title, body string) *PushMessge2IosRequest {
+func PushNotify2Android(target, targetValue, title, body string) *PushNotify2AndroidRequest {
 	if target == "" || targetValue == "" {
 		return nil
 	}
@@ -41,7 +41,7 @@ func PushNotify2Android(target, targetValue, title, body string) *PushMessge2Ios
 	req.Put("Title", title)
 	req.Put("Body", body)
 
-	r := &PushMessge2IosRequest{Request: req}
+	r := &PushNotify2AndroidRequest{Request: req}
 	return r
 }
 
