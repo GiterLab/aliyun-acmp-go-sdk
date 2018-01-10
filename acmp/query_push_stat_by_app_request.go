@@ -9,11 +9,11 @@ import (
 
 type AppPushStat struct {
 	Time          string `json:"Time"`
-	AcceptCount   int `json:"AcceptCount"`
-	SentCount     int `json:"SentCount"`
-	ReceivedCount int `json:"ReceivedCount"`
-	OpenedCount   int `json:"OpenedCount"`
-	DeletedCount  int `json:"DeletedCount"`
+	AcceptCount   int    `json:"AcceptCount"`
+	SentCount     int    `json:"SentCount"`
+	ReceivedCount int    `json:"ReceivedCount"`
+	OpenedCount   int    `json:"OpenedCount"`
+	DeletedCount  int    `json:"DeletedCount"`
 }
 
 type AppPushStats struct {

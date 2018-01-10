@@ -8,11 +8,11 @@ import (
 
 type MsgPushStat struct {
 	MessageId     string `json:"MessageId"`
-	AcceptCount   int `json:"AcceptCount"`
-	SentCount     int `json:"SentCount"`
-	ReceivedCount int `json:"ReceivedCount"`
-	OpenedCount   int `json:"OpenedCount"`
-	DeletedCount  int `json:"DeletedCount"`
+	AcceptCount   int    `json:"AcceptCount"`
+	SentCount     int    `json:"SentCount"`
+	ReceivedCount int    `json:"ReceivedCount"`
+	OpenedCount   int    `json:"OpenedCount"`
+	DeletedCount  int    `json:"DeletedCount"`
 }
 
 type MsgPushStats struct {

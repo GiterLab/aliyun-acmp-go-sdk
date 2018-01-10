@@ -10,22 +10,22 @@ import (
 // MessageInfo 消息结构体
 type MessageInfo struct {
 	MessageId  string `json:"MessageId"`
-	Type       int `json:"Type"`
-	Status     int `json:"Status"`
+	Type       int    `json:"Type"`
+	Status     int    `json:"Status"`
 	Title      string `json:"Title"`
 	Body       string `json:"Body"`
 	Summary    string `json:"Summary"`
 	AppName    string `json:"AppName"`
-	AppKey     int `json:"AppKey"`
-	DeviceType int `json:"DeviceType"`
-	PushTime   int64 `json:"PushTime"`
+	AppKey     int    `json:"AppKey"`
+	DeviceType int    `json:"DeviceType"`
+	PushTime   int64  `json:"PushTime"`
 }
 
 // SummaryMessageInfos 消息结构体
 type SummaryMessageInfos struct {
-	Total        int `json:"Total"`
-	Page         int `json:"Page"`
-	PageSize     int `json:"PageSize"`
+	Total        int            `json:"Total"`
+	Page         int            `json:"Page"`
+	PageSize     int            `json:"PageSize"`
 	MessageInfos []*MessageInfo `json:"MessageInfos"`
 }
 

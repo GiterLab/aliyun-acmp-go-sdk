@@ -7,29 +7,22 @@ import (
 	"time"
 )
 
-type AppDeviceStat struct {
-	Time       string `json:"Time"`
-	Count      int    `json:"Count"`
-	DeviceType string `json:"DeviceType,omitempty"`
-}
-
-type AppDeviceStats struct {
-	AppDeviceStats []*AppDeviceStat `json:"AppDeviceStats"`
-}
-
-type QueryDeviceStatResponse struct {
+// QueryUniqueDeviceStatResponse 查询去重设备返回响应
+type QueryUniqueDeviceStatResponse struct {
 	ErrorMessage
 	AppDeviceStats *AppDeviceStats `json:"AppDeviceStats,omitempty"`
 }
 
-func (q *QueryDeviceStatResponse) GetAppDeviceStats() *AppDeviceStats {
+// GetAppDeviceStats 获取响应体里面的设备状态
+func (q *QueryUniqueDeviceStatResponse) GetAppDeviceStats() *AppDeviceStats {
 	if q != nil && q.AppDeviceStats != nil {
 		return q.AppDeviceStats
 	}
 	return nil
 }
 
-func (q *QueryDeviceStatResponse) String() string {
+// String 序列化响应
+func (q *QueryUniqueDeviceStatResponse) String() string {
 	body, err := json.Marshal(q)
 	if err != nil {
 		return ""
@@ -37,14 +30,16 @@ func (q *QueryDeviceStatResponse) String() string {
 	return string(body)
 }
 
-type QueryDeviceStatRequest struct {
+// QueryUniqueDeviceStatRequest http请求结构体
+type QueryUniqueDeviceStatRequest struct {
 	Request *Request
 }
 
-func (q *QueryDeviceStatRequest) DoActionWithException() (*QueryDeviceStatResponse, error) {
+// DoActionWithException 发起http请求
+func (q *QueryUniqueDeviceStatRequest) DoActionWithException() (*QueryUniqueDeviceStatResponse, error) {
 	if q != nil && q.Request != nil {
-		resp := &QueryDeviceStatResponse{}
-		body, httpCode, err := q.Request.Do("QueryDeviceStat")
+		resp := &QueryUniqueDeviceStatResponse{}
+		body, httpCode, err := q.Request.Do("QueryUniqueDeviceStat")
 		resp.SetHTTPCode(httpCode)
 		if err != nil {
 			return resp, err
@@ -61,16 +56,15 @@ func (q *QueryDeviceStatRequest) DoActionWithException() (*QueryDeviceStatRespon
 	return nil, errors.New("SendRequest is nil")
 }
 
-func QueryDeviceStat(appKey int, startTime, endTime int64, deviceType, queryType string) *QueryDeviceStatRequest {
+// QueryUniqueDeviceStat 获取去重设备接口
+func QueryUniqueDeviceStat(appKey int, startTime, endTime int64) *QueryUniqueDeviceStatRequest {
 	req := newRequset()
 	req.Put("Version", "2016-08-01")
 	req.Put("Action", "QueryDeviceStat")
 	req.Put("AppKey", strconv.Itoa(appKey))
 	req.Put("StartTime", time.Unix(startTime, 0).Format("2006-01-02T15:04:05Z"))
 	req.Put("EndTime", time.Unix(endTime, 0).Format("2006-01-02T15:04:05Z"))
-	req.Put("DeviceType", deviceType)
-	req.Put("QueryType", queryType)
 
-	r := &QueryDeviceStatRequest{Request: req}
+	r := &QueryUniqueDeviceStatRequest{Request: req}
 	return r
 }
