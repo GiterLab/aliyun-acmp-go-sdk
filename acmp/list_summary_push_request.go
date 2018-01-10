@@ -84,8 +84,8 @@ func ListSummaryPush(appKey int, pushType string, startTime, endTime int64) *Lis
 	req.Put("Version", "2016-08-01")
 	req.Put("Action", "ListPushRecords")
 	req.Put("AppKey", strconv.Itoa(appKey))
-	req.Put("StartTime", time.Unix(startTime, 0).Format("YYYY-MM-DDThh:mm:ssZ"))
-	req.Put("EndTime", time.Unix(endTime, 0).Format("YYYY-MM-DDThh:mm:ssZ"))
+	req.Put("StartTime", time.Unix(startTime, 0).Format("2006-01-02T15:04:05Z"))
+	req.Put("EndTime", time.Unix(endTime, 0).Format("2006-01-02T15:04:05Z"))
 	req.Put("PushType", pushType)
 
 	r := &ListSummaryPushMessageInfoRequest{Request: req}
