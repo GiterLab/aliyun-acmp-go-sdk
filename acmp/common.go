@@ -127,7 +127,7 @@ func newRequset() *Request {
 	req.Put("SignatureNonce", uuid.New())
 	req.Put("AccessKeyId", acsClient.AccessID)
 	req.Put("SignatureVersion", "1.0")
-	req.Put("Timestamp", time.Now().UTC().Format(time.RFC3339))
+	req.Put("Timestamp", time.Now().UTC().Format("2006-01-02T15:04:05Z"))
 	req.Put("Format", "JSON")
 
 	// 2. 业务API参数

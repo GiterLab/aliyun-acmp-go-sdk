@@ -7,16 +7,17 @@ import (
 )
 
 func main() {
+	// pass
 	acmp.HTTPDebugEnable = true
 	acmp.SetACLClient(ACCESSID, ACCESSKEY)
 
 	// 推送通知给android设备
 	extParameters := make(map[string]interface{}, 0)
-	pushNoticeRespon, err := acmp.PushNotice2Android(23267207, "target", "targetValue", "title", "body").
+	pushNoticeRespones, err := acmp.PushNoticeToAndroid(24639402, "ACCOUNT", "59f02c23-3d61-4ac7-a07e-a9bb2a7970bf", "this is title", "test").
 		SetPushExtParameters(extParameters).DoActionWithException()
 	if err != nil {
-		fmt.Println("PushNotice2Android failed", err, pushNoticeRespon.Error())
+		fmt.Println("PushNoticeToAndroid failed", err, pushNoticeRespones.Error())
 		os.Exit(0)
 	}
-	fmt.Println("PushNotice2Android successed", pushNoticeRespon.String())
+	fmt.Println("PushNoticeToAndroid successed", pushNoticeRespones.String())
 }

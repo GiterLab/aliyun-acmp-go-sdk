@@ -9,34 +9,34 @@ import (
 
 // MessageInfo 消息结构体
 type MessageInfo struct {
-	MessageId  string
-	Type       int
-	Status     int
-	Title      string
-	Body       string
-	Summary    string
-	AppName    string
-	AppKey     int
-	DeviceType int
-	PushTime   int64
+	MessageID  string `json:"MessageId"`
+	Type       int    `json:"Type"`
+	Status     int    `json:"Status"`
+	Title      string `json:"Title"`
+	Body       string `json:"Body"`
+	Summary    string `json:"Summary"`
+	AppName    string `json:"AppName"`
+	AppKey     int    `json:"AppKey"`
+	DeviceType int    `json:"DeviceType"`
+	PushTime   int64  `json:"PushTime"`
 }
 
 // SummaryMessageInfos 消息结构体
 type SummaryMessageInfos struct {
-	Total        int
-	Page         int
-	PageSize     int
-	MessageInfos []*MessageInfo
+	Total        int            `json:"Total"`
+	Page         int            `json:"Page"`
+	PageSize     int            `json:"PageSize"`
+	MessageInfos []*MessageInfo `json:"MessageInfos"`
 }
 
-// ListSummaryPushResponse 请求响应
-type ListSummaryPushResponse struct {
+// ListPushRecordsResponse 请求响应
+type ListPushRecordsResponse struct {
 	ErrorMessage
-	SummaryMessageInfos *SummaryMessageInfos
+	SummaryMessageInfos *SummaryMessageInfos `json:"SummaryMessageInfos,omitempty"`
 }
 
 // GetSummaryMessageInfos 获取请求结构体的get方法
-func (l *ListSummaryPushResponse) GetSummaryMessageInfos() *SummaryMessageInfos {
+func (l *ListPushRecordsResponse) GetSummaryMessageInfos() *SummaryMessageInfos {
 	if l != nil && l.SummaryMessageInfos != nil {
 		return l.SummaryMessageInfos
 	}
@@ -44,7 +44,7 @@ func (l *ListSummaryPushResponse) GetSummaryMessageInfos() *SummaryMessageInfos 
 }
 
 // String 序列化响应
-func (l *ListSummaryPushResponse) String() string {
+func (l *ListPushRecordsResponse) String() string {
 	body, err := json.Marshal(l)
 	if err != nil {
 		return ""
@@ -52,15 +52,15 @@ func (l *ListSummaryPushResponse) String() string {
 	return string(body)
 }
 
-// ListSummaryPushMessageInfoRequest http请求结构体
-type ListSummaryPushMessageInfoRequest struct {
+// ListPushRecordsRequest http请求结构体
+type ListPushRecordsRequest struct {
 	Request *Request
 }
 
 // DoActionWithException 发起http请求
-func (l *ListSummaryPushMessageInfoRequest) DoActionWithException() (resp *ListSummaryPushResponse, err error) {
+func (l *ListPushRecordsRequest) DoActionWithException() (resp *ListPushRecordsResponse, err error) {
 	if l != nil && l.Request != nil {
-		resp := &ListSummaryPushResponse{}
+		resp := &ListPushRecordsResponse{}
 		body, httpCode, err := l.Request.Do("ListPushRecords")
 		resp.SetHTTPCode(httpCode)
 		if err != nil {
@@ -78,21 +78,22 @@ func (l *ListSummaryPushMessageInfoRequest) DoActionWithException() (resp *ListS
 	return nil, errors.New("SendRequest is nil")
 }
 
-// ListSummaryPush 查询推送列表接口
-func ListSummaryPush(appKey int, pushType string, startTime, endTime int64) *ListSummaryPushMessageInfoRequest {
+// ListPushRecords 查询推送列表接口
+func ListPushRecords(appKey int, pushType string, startTime, endTime int64) *ListPushRecordsRequest {
 	req := newRequset()
 	req.Put("Version", "2016-08-01")
 	req.Put("Action", "ListPushRecords")
 	req.Put("AppKey", strconv.Itoa(appKey))
-	req.Put("StartTime", time.Unix(startTime, 0).Format("YYYY-MM-DDThh:mm:ssZ"))
-	req.Put("EndTime", time.Unix(endTime, 0).Format("YYYY-MM-DDThh:mm:ssZ"))
+	req.Put("StartTime", time.Unix(startTime, 0).Format("2006-01-02T15:04:05Z"))
+	req.Put("EndTime", time.Unix(endTime, 0).Format("2006-01-02T15:04:05Z"))
 	req.Put("PushType", pushType)
 
-	r := &ListSummaryPushMessageInfoRequest{Request: req}
+	r := &ListPushRecordsRequest{Request: req}
 	return r
 }
 
-func (l *ListSummaryPushMessageInfoRequest) SetPage(page int) *ListSummaryPushMessageInfoRequest {
+// SetPage 设置请求起始页码
+func (l *ListPushRecordsRequest) SetPage(page int) *ListPushRecordsRequest {
 	if l == nil || l.Request == nil {
 		return nil
 	}
@@ -101,7 +102,8 @@ func (l *ListSummaryPushMessageInfoRequest) SetPage(page int) *ListSummaryPushMe
 	return l
 }
 
-func (l *ListSummaryPushMessageInfoRequest) SetPageSize(pageSize int) *ListSummaryPushMessageInfoRequest {
+// SetPageSize 设置每页大小
+func (l *ListPushRecordsRequest) SetPageSize(pageSize int) *ListPushRecordsRequest {
 	if l == nil || l.Request == nil {
 		return nil
 	}

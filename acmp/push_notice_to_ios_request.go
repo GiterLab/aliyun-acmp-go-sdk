@@ -9,13 +9,13 @@ import (
 // PushNoticeResponse 通知响应结构体
 type PushNoticeResponse struct {
 	ErrorMessage
-	MessageId string `json:"message_id"`
+	MessageID string `json:"MessageId,omitempty"`
 }
 
-// getMessageId 获取通知响应的messageId
-func (p *PushNoticeResponse) GetMessageId() string {
-	if p != nil && p.MessageId != "" {
-		return p.MessageId
+// GetMessageID 获取通知响应的messageId
+func (p *PushNoticeResponse) GetMessageID() string {
+	if p != nil && p.MessageID != "" {
+		return p.MessageID
 	}
 	return ""
 }

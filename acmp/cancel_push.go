@@ -5,10 +5,12 @@ import (
 	"errors"
 )
 
+// CancelPushResponse 取消定时推送任务结构体
 type CancelPushResponse struct {
 	ErrorMessage
 }
 
+// String 响应序列化
 func (c *CancelPushResponse) String() string {
 	body, err := json.Marshal(c)
 	if err != nil {
@@ -17,10 +19,12 @@ func (c *CancelPushResponse) String() string {
 	return string(body)
 }
 
+// CancelPushRequest 取消定时推送任务请求结构体
 type CancelPushRequest struct {
 	Request *Request
 }
 
+// DoActionWithException 取消定时推送任务http请求
 func (c *CancelPushRequest) DoActionWithException() (resp *CancelPushResponse, err error) {
 	if c != nil && c.Request != nil {
 		resp := &CancelPushResponse{}
@@ -41,14 +45,15 @@ func (c *CancelPushRequest) DoActionWithException() (resp *CancelPushResponse, e
 	return nil, errors.New("SendRequest is nil")
 }
 
-func CancelPush(messageId string) *CancelPushRequest {
-	if messageId == "" {
+// CancelPush 取消定时推送任务接口
+func CancelPush(messageID string) *CancelPushRequest {
+	if messageID == "" {
 		return nil
 	}
 	req := newRequset()
 	req.Put("Version", "2016-08-01")
 	req.Put("Action", "CancelPush")
-	req.Put("MessageId", messageId)
+	req.Put("MessageId", messageID)
 
 	r := &CancelPushRequest{Request: req}
 	return r

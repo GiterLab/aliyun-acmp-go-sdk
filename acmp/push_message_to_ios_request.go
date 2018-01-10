@@ -9,13 +9,13 @@ import (
 // PushMessageResponse 推送消息响应结构体
 type PushMessageResponse struct {
 	ErrorMessage
-	MessageId string `json:"message_id"`
+	MessageID string `json:"MessageId,omitempty"`
 }
 
-// getMessageId 获取messageId
-func (p *PushMessageResponse) GetMessageId() string {
-	if p != nil && p.MessageId != "" {
-		return p.MessageId
+// GetMessageID 获取messageID
+func (p *PushMessageResponse) GetMessageID() string {
+	if p != nil && p.MessageID != "" {
+		return p.MessageID
 	}
 	return ""
 }
@@ -55,8 +55,8 @@ func (p *PushMessageToiOSRequest) DoActionWithException() (resp *PushMessageResp
 	return nil, errors.New("SendRequest is nil")
 }
 
-// PushMessageToiOSRequestos 推送iOS消息接口
-func PushMessageToiOSRequestos(appKey int, target, targetValue, body string) *PushMessageToiOSRequest {
+// PushMessageToiOS 推送iOS消息接口
+func PushMessageToiOS(appKey int, target, targetValue, body string) *PushMessageToiOSRequest {
 	if target == "" || targetValue == "" {
 		return nil
 	}

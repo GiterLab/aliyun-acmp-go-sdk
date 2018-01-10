@@ -32,8 +32,8 @@ func (p *PushNoticeToAndroidRequest) DoActionWithException() (resp *PushNoticeRe
 	return nil, errors.New("SendRequest is nil")
 }
 
-// PushNotice2Android 推送通知到android平台接口
-func PushNotice2Android(appKey int, target, targetValue, title, body string) *PushNoticeToAndroidRequest {
+// PushNoticeToAndroid 推送通知到android平台接口
+func PushNoticeToAndroid(appKey int, target, targetValue, title, body string) *PushNoticeToAndroidRequest {
 	if target == "" || targetValue == "" {
 		return nil
 	}
