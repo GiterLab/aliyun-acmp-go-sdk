@@ -14,6 +14,7 @@ const (
 )
 
 func main() {
+	// pass
 	acmp.HTTPDebugEnable = true
 	acmp.SetACLClient(ACCESSID, ACCESSKEY)
 

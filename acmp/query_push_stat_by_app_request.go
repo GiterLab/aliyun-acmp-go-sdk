@@ -8,12 +8,12 @@ import (
 )
 
 type AppPushStat struct {
-	Time string
-	AcceptCount int
-	SentCount int
+	Time          string
+	AcceptCount   int
+	SentCount     int
 	ReceivedCount int
-	OpenedCount int
-	DeletedCount int
+	OpenedCount   int
+	DeletedCount  int
 }
 
 type AppPushStats struct {
@@ -25,16 +25,16 @@ type QueryPushStatByAppResponse struct {
 	AppPushStats *AppPushStats
 }
 
-func (q *QueryPushStatByAppResponse)GetAppPushStats() *AppPushStats {
-	if q!=nil&&q.AppPushStats!=nil {
+func (q *QueryPushStatByAppResponse) GetAppPushStats() *AppPushStats {
+	if q != nil && q.AppPushStats != nil {
 		return q.AppPushStats
 	}
 	return nil
 }
 
-func (q *QueryPushStatByAppResponse)String() string {
-	body,err:=json.Marshal(q)
-	if err!=nil {
+func (q *QueryPushStatByAppResponse) String() string {
+	body, err := json.Marshal(q)
+	if err != nil {
 		return ""
 	}
 	return string(body)
@@ -64,17 +64,15 @@ func (q *QueryPushStatByAppRequest) DoActionWithException() (resp *QueryPushStat
 	return nil, errors.New("SendRequest is nil")
 }
 
-func QueryPushStatByApp(appKey int,startTime,endTime int64,granularity string) *QueryPushStatByAppRequest {
-	req:=&Request{}
+func QueryPushStatByApp(appKey int, startTime, endTime int64, granularity string) *QueryPushStatByAppRequest {
+	req := newRequset()
 	req.Put("Version", "2016-08-01")
 	req.Put("Action", "QueryPushStatByApp")
 	req.Put("AppKey", strconv.Itoa(appKey))
 	req.Put("StartTime", time.Unix(startTime, 0).Format("2006-01-02T15:04:05Z"))
 	req.Put("EndTime", time.Unix(endTime, 0).Format("2006-01-02T15:04:05Z"))
-	req.Put("Granularity",granularity)
+	req.Put("Granularity", granularity)
 
-	r:=&QueryPushStatByAppRequest{Request:req}
+	r := &QueryPushStatByAppRequest{Request: req}
 	return r
 }
-
-
