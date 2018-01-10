@@ -10,12 +10,13 @@ func main() {
 	acmp.HTTPDebugEnable = true
 	acmp.SetACLClient(ACCESSID, ACCESSKEY)
 
+	// 推送通知给android设备
 	extParameters := make(map[string]interface{}, 0)
-	pushNotifyRespon, err := acmp.PushNotify2Android("target", "targetValue", "title", "body").
+	pushNoticeRespones, err := acmp.PushNoticeToAndroid(23267207, "target", "targetValue", "title", "body").
 		SetPushExtParameters(extParameters).DoActionWithException()
 	if err != nil {
-		fmt.Println("PushNotify2Android failed", err, pushNotifyRespon.Error())
+		fmt.Println("PushNoticeToAndroid failed", err, pushNoticeRespones.Error())
 		os.Exit(0)
 	}
-	fmt.Println("PushNotify2Android successed", pushNotifyRespon.String())
+	fmt.Println("PushNoticeToAndroid successed", pushNoticeRespones.String())
 }
