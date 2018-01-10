@@ -8,13 +8,13 @@ import (
 
 // DeviceCheckInfo 检查设备信息
 type DeviceCheckInfo struct {
-	DeviceId  string `json:"DeviceId"`
+	DeviceI  string `json:"DeviceId"`
 	Available string `json:"Available"`
 }
 
 // DeviceCheckInfos 检查设备信息
 type DeviceCheckInfos struct {
-	DeviceCheckInfos []*DeviceCheckInfo `json:"DeviceCheckInfos"`
+	DeviceCheckInfos []DeviceCheckInfo `json:"DeviceCheckInfos"`
 }
 
 // CheckDevicesResponse 检查设备响应
@@ -67,6 +67,7 @@ func (c *CheckDevicesRequest) DoActionWithException() (*CheckDevicesResponse, er
 }
 
 // CheckDevices 设备检查接口
+//
 func CheckDevices(appKey int, deviceIds string) *CheckDevicesRequest {
 	req := newRequset()
 	req.Put("Version", "2016-08-01")

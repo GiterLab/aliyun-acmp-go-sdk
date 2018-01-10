@@ -18,7 +18,7 @@ func main() {
 	acmp.HTTPDebugEnable = true
 	acmp.SetACLClient(ACCESSID, ACCESSKEY)
 
-	// 短信发送
+	// 获取APP概览列表
 	respListSummaryApps, err := acmp.ListSummaryApps().DoActionWithException()
 	if err != nil {
 		fmt.Println("ListSummaryApps failed", err, respListSummaryApps.Error())
