@@ -8,21 +8,21 @@ import (
 )
 
 type AppPushStat struct {
-	Time          string
-	AcceptCount   int
-	SentCount     int
-	ReceivedCount int
-	OpenedCount   int
-	DeletedCount  int
+	Time          string `json:"Time"`
+	AcceptCount   int `json:"AcceptCount"`
+	SentCount     int `json:"SentCount"`
+	ReceivedCount int `json:"ReceivedCount"`
+	OpenedCount   int `json:"OpenedCount"`
+	DeletedCount  int `json:"DeletedCount"`
 }
 
 type AppPushStats struct {
-	AppPushStats []*AppPushStat
+	AppPushStats []*AppPushStat `json:"AppPushStats"`
 }
 
 type QueryPushStatByAppResponse struct {
 	ErrorMessage
-	AppPushStats *AppPushStats
+	AppPushStats *AppPushStats `json:"AppPushStats,omitempty"`
 }
 
 func (q *QueryPushStatByAppResponse) GetAppPushStats() *AppPushStats {

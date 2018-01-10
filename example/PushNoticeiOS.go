@@ -8,12 +8,12 @@ import (
 
 func main() {
 	acmp.HTTPDebugEnable = true
-	acmp.SetACLClient(ACCESSID, ACCESSKEY)
+	//acmp.SetACLClient(ACCESSID, ACCESSKEY)
+	acmp.SetACLClient("LTAIDWbStTxcbWr6","3gk4cQICUPeyPP0WxqH4MF30u6X1yD")
 
 	// 推送通知给iOS设备
-	extParameters := make(map[string]interface{}, 0)
-	pushNoticeRespones, err := acmp.PushNoticeToiOS(23267207, "target", "targetValue", "apnsEnv", "body").
-		SetPushTitle("title").SetPushExtParameters(extParameters).DoActionWithException()
+	//extParameters := make(map[string]interface{}, 0)
+	pushNoticeRespones, err := acmp.PushNoticeToiOS(24640440, "ACCOUNT", "59f02c23-3d61-4ac7-a07e-a9bb2a7970bf", "PRODUCT", "test").SetPushTitle("title").DoActionWithException()
 	if err != nil {
 		fmt.Println("PushNoticeToiOS failed", err, pushNoticeRespones.Error())
 		os.Exit(0)

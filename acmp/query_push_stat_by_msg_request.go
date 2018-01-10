@@ -7,21 +7,21 @@ import (
 )
 
 type MsgPushStat struct {
-	MessageId     string
-	AcceptCount   int
-	SentCount     int
-	ReceivedCount int
-	OpenedCount   int
-	DeletedCount  int
+	MessageId     string `json:"MessageId"`
+	AcceptCount   int `json:"AcceptCount"`
+	SentCount     int `json:"SentCount"`
+	ReceivedCount int `json:"ReceivedCount"`
+	OpenedCount   int `json:"OpenedCount"`
+	DeletedCount  int `json:"DeletedCount"`
 }
 
 type MsgPushStats struct {
-	MsgPushStats []*MsgPushStat
+	MsgPushStats []*MsgPushStat `json:"MsgPushStats"`
 }
 
 type QueryPushStatByMsgResponse struct {
 	ErrorMessage
-	MsgPushStats *MsgPushStats
+	MsgPushStats *MsgPushStats `json:"MsgPushStats,omitempty"`
 }
 
 func (q *QueryPushStatByMsgResponse) GetMsgPushStats() *MsgPushStats {

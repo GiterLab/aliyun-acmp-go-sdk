@@ -9,30 +9,30 @@ import (
 
 // MessageInfo 消息结构体
 type MessageInfo struct {
-	MessageId  string
-	Type       int
-	Status     int
-	Title      string
-	Body       string
-	Summary    string
-	AppName    string
-	AppKey     int
-	DeviceType int
-	PushTime   int64
+	MessageId  string `json:"MessageId"`
+	Type       int `json:"Type"`
+	Status     int `json:"Status"`
+	Title      string `json:"Title"`
+	Body       string `json:"Body"`
+	Summary    string `json:"Summary"`
+	AppName    string `json:"AppName"`
+	AppKey     int `json:"AppKey"`
+	DeviceType int `json:"DeviceType"`
+	PushTime   int64 `json:"PushTime"`
 }
 
 // SummaryMessageInfos 消息结构体
 type SummaryMessageInfos struct {
-	Total        int
-	Page         int
-	PageSize     int
-	MessageInfos []*MessageInfo
+	Total        int `json:"Total"`
+	Page         int `json:"Page"`
+	PageSize     int `json:"PageSize"`
+	MessageInfos []*MessageInfo `json:"MessageInfos"`
 }
 
 // ListSummaryPushResponse 请求响应
 type ListPushRecordsResponse struct {
 	ErrorMessage
-	SummaryMessageInfos *SummaryMessageInfos
+	SummaryMessageInfos *SummaryMessageInfos `json:"SummaryMessageInfos,omitempty"`
 }
 
 // GetSummaryMessageInfos 获取请求结构体的get方法

@@ -8,18 +8,18 @@ import (
 )
 
 type AppDeviceStat struct {
-	Time       string
-	Count      int
-	DeviceType string
+	Time       string `json:"Time"`
+	Count      int `json:"Count"`
+	DeviceType string `json:"DeviceType"`
 }
 
 type AppDeviceStats struct {
-	AppDeviceStats []*AppDeviceStat
+	AppDeviceStats []*AppDeviceStat `json:"AppDeviceStats"`
 }
 
 type QueryDeviceStatResponse struct {
 	ErrorMessage
-	AppDeviceStats *AppDeviceStats
+	AppDeviceStats *AppDeviceStats `json:"AppDeviceStats,omitempty"`
 }
 
 func (q *QueryDeviceStatResponse) GetAppDeviceStats() *AppDeviceStats {

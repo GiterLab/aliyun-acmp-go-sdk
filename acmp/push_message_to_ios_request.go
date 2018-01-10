@@ -9,7 +9,7 @@ import (
 // PushMessageResponse 推送消息响应结构体
 type PushMessageResponse struct {
 	ErrorMessage
-	MessageId string `json:"message_id"`
+	MessageId string `json:"MessageId,omitempty"`
 }
 
 // getMessageId 获取messageId
