@@ -3,16 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fa4fd664-2745-435b-86f1-1a31c4012ce3" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/acmp/list_summary_push.go" afterPath="$PROJECT_DIR$/acmp/list_summary_push_request.go" />
-      <change beforePath="$PROJECT_DIR$/acmp/pus_message.go" afterPath="$PROJECT_DIR$/acmp/push_message_to_android_request.go" />
-      <change beforePath="$PROJECT_DIR$/acmp/push_message_2_ios.go" afterPath="$PROJECT_DIR$/acmp/push_message_to_ios_request.go" />
-      <change beforePath="$PROJECT_DIR$/acmp/push_notify.go" afterPath="$PROJECT_DIR$/acmp/push_notice_to_android_request.go" />
-      <change beforePath="$PROJECT_DIR$/acmp/push_notify_2_ios.go" afterPath="$PROJECT_DIR$/acmp/push_notice_to_ios_request.go" />
-      <change beforePath="$PROJECT_DIR$/example/ListSummaryPush.go" afterPath="$PROJECT_DIR$/example/ListSummaryPush.go" />
-      <change beforePath="$PROJECT_DIR$/example/PushMessageAndroid.go" afterPath="$PROJECT_DIR$/example/PushMessageAndroid.go" />
-      <change beforePath="$PROJECT_DIR$/example/PushMessageIos.go" afterPath="$PROJECT_DIR$/example/PushMessageIos.go" />
-      <change beforePath="$PROJECT_DIR$/example/PushNotifyAndroid.go" afterPath="$PROJECT_DIR$/example/PushNotifyAndroid.go" />
-      <change beforePath="$PROJECT_DIR$/example/PushNotifyIos.go" afterPath="$PROJECT_DIR$/example/PushNotifyIos.go" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -98,9 +88,11 @@
       <file leaf-file-name="push_notice_to_ios_request.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/acmp/push_notice_to_ios_request.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="84" column="36" lean-forward="true" selection-start-line="84" selection-start-column="36" selection-end-line="84" selection-end-column="36" />
-              <folding />
+            <state relative-caret-position="-823">
+              <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+              <folding>
+                <element signature="e#14#62#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -430,7 +422,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="720">
           <caret line="51" column="13" lean-forward="false" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="e#14#62#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -506,7 +500,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#14#62#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -766,9 +762,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/acmp/push_notice_to_ios_request.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="84" column="36" lean-forward="true" selection-start-line="84" selection-start-column="36" selection-end-line="84" selection-end-column="36" />
-          <folding />
+        <state relative-caret-position="-823">
+          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding>
+            <element signature="e#14#62#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
