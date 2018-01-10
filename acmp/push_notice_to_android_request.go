@@ -11,6 +11,16 @@ type PushNoticeToAndroidRequest struct {
 	Request *Request
 }
 
+// SetPushExtParameters 设置推送额外的参数，可选
+func (p *PushNoticeToAndroidRequest) SetPushExtParameters(extParameters map[string]interface{}) *PushNoticeToAndroidRequest {
+	if p == nil || p.Request == nil {
+		return nil
+	}
+	body, _ := json.Marshal(extParameters)
+	p.Request.Put("ExtParameters", string(body))
+	return p
+}
+
 // DoActionWithException 发起http请求
 func (p *PushNoticeToAndroidRequest) DoActionWithException() (resp *PushNoticeResponse, err error) {
 	if p != nil && p.Request != nil {
@@ -50,12 +60,3 @@ func PushNoticeToAndroid(appKey int, target, targetValue, title, body string) *P
 	return r
 }
 
-// SetPushExtParameters 设置推送额外的参数，可选
-func (p *PushNoticeToAndroidRequest) SetPushExtParameters(extParameters map[string]interface{}) *PushNoticeToAndroidRequest {
-	if p == nil || p.Request == nil {
-		return nil
-	}
-	body, _ := json.Marshal(extParameters)
-	p.Request.Put("ExtParameters", string(body))
-	return p
-}

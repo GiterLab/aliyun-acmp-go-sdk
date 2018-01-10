@@ -34,6 +34,25 @@ type PushNoticeToiOSRequest struct {
 	Request *Request
 }
 
+// SetPushTitle 设置通知title，可选
+func (p *PushMessageToiOSRequest) SetPushTitle(title string) *PushMessageToiOSRequest {
+	if p == nil || p.Request == nil {
+		return nil
+	}
+	p.Request.Put("Title", title)
+	return p
+}
+
+// SetPushExtParameters 设置通知额外的参数，可选
+func (p *PushMessageToiOSRequest) SetPushExtParameters(extParameters map[string]interface{}) *PushMessageToiOSRequest {
+	if p == nil || p.Request == nil {
+		return nil
+	}
+	body, _ := json.Marshal(extParameters)
+	p.Request.Put("ExtParameters", string(body))
+	return p
+}
+
 // DoActionWithException 发起http请求
 func (p *PushNoticeToiOSRequest) DoActionWithException() (resp *PushNoticeResponse, err error) {
 	if p != nil && p.Request != nil {
@@ -73,21 +92,3 @@ func PushNoticeToiOS(appKey int, target, targetValue, apnsEnv, body string) *Pus
 	return r
 }
 
-// SetPushTitle 设置通知title，可选
-func (p *PushMessageToiOSRequest) SetPushTitle(title string) *PushMessageToiOSRequest {
-	if p == nil || p.Request == nil {
-		return nil
-	}
-	p.Request.Put("Title", title)
-	return p
-}
-
-// SetPushExtParameters 设置通知额外的参数，可选
-func (p *PushMessageToiOSRequest) SetPushExtParameters(extParameters map[string]interface{}) *PushMessageToiOSRequest {
-	if p == nil || p.Request == nil {
-		return nil
-	}
-	body, _ := json.Marshal(extParameters)
-	p.Request.Put("ExtParameters", string(body))
-	return p
-}

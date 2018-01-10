@@ -57,6 +57,26 @@ type ListPushRecordsRequest struct {
 	Request *Request
 }
 
+// SetPage 设置请求起始页码
+func (l *ListPushRecordsRequest) SetPage(page int) *ListPushRecordsRequest {
+	if l == nil || l.Request == nil {
+		return nil
+	}
+	l.Request.Put("Page", strconv.Itoa(page))
+
+	return l
+}
+
+// SetPageSize 设置每页大小
+func (l *ListPushRecordsRequest) SetPageSize(pageSize int) *ListPushRecordsRequest {
+	if l == nil || l.Request == nil {
+		return nil
+	}
+	l.Request.Put("PageSize", strconv.Itoa(pageSize))
+
+	return l
+}
+
 // DoActionWithException 发起http请求
 func (l *ListPushRecordsRequest) DoActionWithException() (resp *ListPushRecordsResponse, err error) {
 	if l != nil && l.Request != nil {
@@ -92,22 +112,3 @@ func ListPushRecords(appKey int, pushType string, startTime, endTime int64) *Lis
 	return r
 }
 
-// SetPage 设置请求起始页码
-func (l *ListPushRecordsRequest) SetPage(page int) *ListPushRecordsRequest {
-	if l == nil || l.Request == nil {
-		return nil
-	}
-	l.Request.Put("Page", strconv.Itoa(page))
-
-	return l
-}
-
-// SetPageSize 设置每页大小
-func (l *ListPushRecordsRequest) SetPageSize(pageSize int) *ListPushRecordsRequest {
-	if l == nil || l.Request == nil {
-		return nil
-	}
-	l.Request.Put("PageSize", strconv.Itoa(pageSize))
-
-	return l
-}
