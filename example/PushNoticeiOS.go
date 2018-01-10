@@ -8,8 +8,7 @@ import (
 
 func main() {
 	acmp.HTTPDebugEnable = true
-	//acmp.SetACLClient(ACCESSID, ACCESSKEY)
-	acmp.SetACLClient("LTAIDWbStTxcbWr6","3gk4cQICUPeyPP0WxqH4MF30u6X1yD")
+	acmp.SetACLClient(ACCESSID, ACCESSKEY)
 
 	// 推送通知给iOS设备
 	//extParameters := make(map[string]interface{}, 0)
