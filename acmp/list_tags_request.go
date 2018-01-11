@@ -17,6 +17,14 @@ type ListTagsRequest struct {
 	Request *Request
 }
 
+// GetTagInfos 获取响应体里面标签列表信息
+func (l *ListTagsRespones) GetTagInfos() *TagInfos {
+	if l != nil && l.TagInfos != nil {
+		return l.TagInfos
+	}
+	return nil
+}
+
 // String 序列化响应
 func (l *ListTagsRespones) String() string {
 	body, err := json.Marshal(l)

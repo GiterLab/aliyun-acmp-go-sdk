@@ -22,9 +22,17 @@ type QueryAliasesRespones struct {
 	AliasInfos *AliasInfos `json:"AliasInfos,omitempty"`
 }
 
+// GetAliasInfos 获取响应体的别名信息
+func (q *QueryAliasesRespones) GetAliasInfos() *AliasInfos {
+	if q != nil && q.AliasInfos != nil {
+		return q.AliasInfos
+	}
+	return nil
+}
+
 // String 序列化响应
-func (l *QueryAliasesRespones) String() string {
-	body, err := json.Marshal(l)
+func (q *QueryAliasesRespones) String() string {
+	body, err := json.Marshal(q)
 	if err != nil {
 		return ""
 	}

@@ -22,9 +22,17 @@ type QueryTagsRespones struct {
 	TagInfos *TagInfos `json:"TagInfos,omitempty"`
 }
 
+// GetTagInfos 获取响应体内标签信息
+func (q *QueryTagsRespones) GetTagInfos() *TagInfos {
+	if q != nil && q.TagInfos != nil {
+		return q.TagInfos
+	}
+	return nil
+}
+
 // String 序列化响应
-func (l *QueryTagsRespones) String() string {
-	body, err := json.Marshal(l)
+func (q *QueryTagsRespones) String() string {
+	body, err := json.Marshal(q)
 	if err != nil {
 		return ""
 	}
