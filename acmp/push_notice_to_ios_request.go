@@ -91,4 +91,3 @@ func PushNoticeToiOS(appKey int, target, targetValue, apnsEnv, body string) *Pus
 	r := &PushMessageToiOSRequest{Request: req}
 	return r
 }
-

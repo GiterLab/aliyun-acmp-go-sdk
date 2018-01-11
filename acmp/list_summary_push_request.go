@@ -111,4 +111,3 @@ func ListPushRecords(appKey int, pushType string, startTime, endTime int64) *Lis
 	r := &ListPushRecordsRequest{Request: req}
 	return r
 }
-

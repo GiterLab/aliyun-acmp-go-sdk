@@ -59,4 +59,3 @@ func PushNoticeToAndroid(appKey int, target, targetValue, title, body string) *P
 	r := &PushNoticeToAndroidRequest{Request: req}
 	return r
 }
-
